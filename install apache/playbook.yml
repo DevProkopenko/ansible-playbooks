@@ -39,21 +39,6 @@
       - Restart Apache Debian
 
 
-  - name: Copy full file to servers
-    copy: src={{ item }} dest={{ destin_folder }} mode=555
-    with_fileglob: "{{ source_folder }}/*"
-
-#  - name: Copy loop
-#    copy: src={{ source_folder }}/{{ item }} dest={{ destin_folder }} mode=555
-#    loop:
-#      - "file4"
-#      - "pro.art"
-    notify:
-      - Restart Apache RedHat
-      - Restart Apache Debian
-
-
-
   handlers:
   - name: Restart Apache RedHat
     service: name=httpd state=restarted
